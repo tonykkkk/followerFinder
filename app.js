@@ -1,4 +1,3 @@
-const API_KEY_BOT = "8360419980:AAECs86L-r-8ujQ4vy8UKTHXU_MljO2NAzU";
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const serverless = require("serverless-http");
