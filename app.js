@@ -1,4 +1,3 @@
-const API_KEY_BOT = "8360419980:AAECs86L-r-8ujQ4vy8UKTHXU_MljO2NAzU";
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const serverless = require("serverless-http");
@@ -35,14 +34,4 @@ app.post("/todos", (req, res) => {
   res.status(201).json(newTodo);
 });
 
-const bot = new TelegramBot(API_KEY_BOT, {
-  polling: {
-    interval: 300,
-    autoStart: true,
-  },
-});
-bot.on("polling_error", (err) => console.log(err));
-bot.on("text", async (msg) => {
-  console.log(msg);
-});
 //app.listen(3000, () => console.log("Server is running on port 3000"));
