@@ -1,11 +1,17 @@
-const express = require("express");
-const serverless = require("serverless-http");
-const app = express();
-const router = express.Router();
+const Telegraf = require("telegraf");
+const startAction = require("./tocamosa/start");
+const inlineAction = require("./tocamosa/inline");
+const bot = new Telegraf(process.env.API_KEY_BOT);
 
-router.get("/", (req, res) => {
-  res.send("App is running..");
+bot.start((ctx) => {
+  return startAction(ctx);
 });
 
-app.use("/.netlify/functions/app", router);
-module.exports.handler = serverless(app);
+bot.on("inline_query", (ctx) => {
+  return inlineAction(ctx);
+});
+
+exports.handler = async (event) => {
+  await bot.handleUpdate(JSON.parse(event.body));
+  return { statusCode: 200, body: "" };
+};
