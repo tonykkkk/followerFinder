@@ -1,6 +1,6 @@
 const Telegraf = require("telegraf");
-const startAction = require("./tocamosa/start");
-const inlineAction = require("./tocamosa/inline");
+const startAction = require("./instaspy/start");
+const inlineAction = require("./instaspy/inline");
 const bot = new Telegraf(process.env.API_KEY_BOT);
 
 bot.start((ctx) => {
