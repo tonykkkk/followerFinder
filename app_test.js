@@ -1,3 +1,4 @@
+require("dotenv").config();
 const TelegramBot = require("node-telegram-bot-api");
 const express = require("express");
 const serverless = require("serverless-http");
@@ -6,7 +7,7 @@ const followingData = require("./data/following");
 const app = express();
 const router = express.Router();
 app.use(express.json());
-
+console.log(process.env.API_KEY_BOT);
 let following = followingData.relationships_following;
 
 router.get("/", (req, res) => {
@@ -34,4 +35,4 @@ app.post("/todos", (req, res) => {
   res.status(201).json(newTodo);
 });
 
-//app.listen(3000, () => console.log("Server is running on port 3000"));
+app.listen(3000, () => console.log("Server is running on port 3000"));
