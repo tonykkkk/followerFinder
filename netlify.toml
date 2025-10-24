@@ -1,4 +1,4 @@
 [build]
   publish = "build"
   command = "netlify-lambda build functions"
-  functions = "functions"
+  functions = "build\functions"
